@@ -1,0 +1,73 @@
+[
+  {
+    "t1": "thunderstorm with light rain",
+    "t2": "thunderstorm with rain",
+    "t3": "thunderstorm with heavy rain",
+    "t4": "light thunderstorm",
+    "t5": "thunderstorm",
+    "t6": "heavy thunderstorm",
+    "t7": "ragged thunderstorm",
+    "t8": "thunderstorm with light drizzle",
+    "t9": "thunderstorm with drizzle",
+    "t10": "thunderstorm with heavy drizzle"
+  },
+  {
+    "d1": "light intensity drizzle",
+    "d2": "drizzle",
+    "d3": "heavy intensity drizzle",
+    "d4": "light intensity drizzle rain",
+    "d5": "drizzle rain",
+    "d6": "heavy intensity drizzle rain",
+    "d7": "shower rain and drizzle",
+    "d8": "heavy shower rain and drizzle",
+    "d9": "shower drizzle",
+    "d10": "light intensity shower rain",
+    "d11": "shower rain",
+    "d12": "heavy intensity shower rain",
+    "d13": "ragged shower rain"
+  },
+  {
+    "s1": "light snow",
+    "s2": "Snow",
+    "s3": "Heavy snow",
+    "s4": "Sleet",
+    "s5": "Light shower sleet",
+    "s6": "Shower sleet",
+    "s7": "Light rain and snow",
+    "s8": "Rain and snow",
+    "s9": "Light shower snow",
+    "s10": "Shower snow",
+    "s11": "Heavy shower snow",
+    "s12": "freezing rain"
+  },
+  {
+    "r1": "light rain",
+    "r2": "moderate rain",
+    "r3": "heavy intensity rain",
+    "r4": "very heavy rain",
+    "r5": "extreme rain"
+  },
+  {
+    "a1": "mist",
+    "a2": "Smoke",
+    "a3": "Haze",
+    "a4": "sand/ dust whirls",
+    "a5": "fog",
+    "a6": "sand",
+    "a7": "dust",
+    "a8": "volcanic ash",
+    "a9": "squalls",
+    "a10": "tornado"
+  },
+  {
+    "c1": "clear sky"
+  },
+  {
+    "bc1": "few clouds",
+    "bc2": "scattered clouds"
+  },
+  {
+    "vc1": "broken clouds",
+    "vc2": "overcast clouds"
+  }
+]

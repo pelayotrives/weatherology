@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import MoonLoader from "react-spinners/MoonLoader";
+import ReactAnimatedWeather from 'react-animated-weather';
+import weatherJSON from '../assets/weather.json';
 
 export default function Main() {
 
@@ -39,7 +41,7 @@ export default function Main() {
   //! Call to API and consuming data (UnSplash).
   //* useState is async, so if we try to do something with it in parallel, we won't have it until the next iteration.
   //* We will have to use useRef and asign a preset param to have something to show in the first iteration (param = 'Sky').
-  const obtainImage = async (queryParam = 'Basic Gradient') => {
+  const obtainImage = async (queryParam = 'Black') => {
     try {
       let endpoint = `https://api.unsplash.com/search/photos/?query=${queryParam}&client_id=${REACT_APP_ACCESS_KEY}`;
       let response = await axios.get(endpoint);
@@ -97,7 +99,7 @@ export default function Main() {
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-      }}>
+    }}>
 
         <div className="nav flex flex-row justify-between content-center items-center px-10 py-4 bg-white bg-opacity-25 backdrop-blur-md drop-shadow-lg">
             <h1 className="text-black text-center sm:text-lg md:text-xl font-onlytitles font-regular"><span className="font-bold">Weather</span>ology®</h1>
@@ -111,7 +113,57 @@ export default function Main() {
             <div className="body flex flex-col self-center w-fit bg-white bg-opacity-25 backdrop-blur-md drop-shadow-lg rounded-3xl">
                 <h2 className="text-6xl font-onlytitles text-center">{weather.name}, <span>{weather.sys.country}</span></h2>
                 <p className="text-xl text-center font-onlytitles">Updated on {date} at {time}</p>
-                <img src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="Weather icon" size={10}/>  
+                { weather.weather[0].description === weatherJSON[5].c1 ? 
+                    <ReactAnimatedWeather
+                        icon={"CLEAR_DAY"}
+                        color={"white"}
+                        size={256}
+                        animate={true}
+                    />
+                  : (weather.weather[0].description === weatherJSON[6].bc1) || (weather.weather[0].description === weatherJSON[6].bc2) ?
+                    <ReactAnimatedWeather
+                        icon={"PARTLY_CLOUDY_DAY"}
+                        color={"white"}
+                        size={256}
+                        animate={true}
+                    />
+                  : (weather.weather[0].description === weatherJSON[7].vc1) || (weather.weather[0].description === weatherJSON[7].vc2) ?
+                    <ReactAnimatedWeather
+                        icon={"CLOUDY"}
+                        color={"white"}
+                        size={256}
+                        animate={true}
+                    />
+                  : (weather.weather[0].description === weatherJSON[1].d1) || (weather.weather[0].description === weatherJSON[1].d2) || (weather.weather[0].description === weatherJSON[1].d3) || (weather.weather[0].description === weatherJSON[1].d4) || (weather.weather[0].description === weatherJSON[1].d5) || (weather.weather[0].description === weatherJSON[1].d6) || (weather.weather[0].description === weatherJSON[1].d7) || (weather.weather[0].description === weatherJSON[1].d8) || (weather.weather[0].description === weatherJSON[1].d9) || (weather.weather[0].description === weatherJSON[1].d10) || (weather.weather[0].description === weatherJSON[1].d11)|| (weather.weather[0].description === weatherJSON[1].d12)|| (weather.weather[0].description === weatherJSON[1].d13) ?
+                    <ReactAnimatedWeather
+                        icon={"SLEET"}
+                        color={"white"}
+                        size={256}
+                        animate={true}
+                    />
+                  : (weather.weather[0].description === weatherJSON[0].t1) || (weather.weather[0].description === weatherJSON[0].t2) || (weather.weather[0].description === weatherJSON[0].t3) || (weather.weather[0].description === weatherJSON[0].t4) || (weather.weather[0].description === weatherJSON[0].t5) || (weather.weather[0].description === weatherJSON[0].t6) || (weather.weather[0].description === weatherJSON[0].t7) || (weather.weather[0].description === weatherJSON[0].t8) || (weather.weather[0].description === weatherJSON[0].t9) || (weather.weather[0].description === weatherJSON[0].t10) || (weather.weather[0].description === weatherJSON[3].r1) || (weather.weather[0].description === weatherJSON[3].r2) || (weather.weather[0].description === weatherJSON[3].r3) || (weather.weather[0].description === weatherJSON[3].r4) ?
+                    <ReactAnimatedWeather
+                        icon={"RAIN"}
+                        color={"white"}
+                        size={256}
+                        animate={true}
+                    />
+                  : (weather.weather[0].description === weatherJSON[2].s1) || (weather.weather[0].description === weatherJSON[2].s2)|| (weather.weather[0].description === weatherJSON[2].s3)|| (weather.weather[0].description === weatherJSON[2].s4)|| (weather.weather[0].description === weatherJSON[2].s5)|| (weather.weather[0].description === weatherJSON[2].s6)|| (weather.weather[0].description === weatherJSON[2].s7)|| (weather.weather[0].description === weatherJSON[2].s8)|| (weather.weather[0].description === weatherJSON[2].s9)|| (weather.weather[0].description === weatherJSON[2].s10)|| (weather.weather[0].description === weatherJSON[2].s11)|| (weather.weather[0].description === weatherJSON[2].s12) ?
+                    <ReactAnimatedWeather
+                        icon={"SNOW"}
+                        color={"white"}
+                        size={256}
+                        animate={true}
+                    />
+                  : (weather.weather[0].description === weatherJSON[4].a1) || (weather.weather[0].description === weatherJSON[4].a2) || (weather.weather[0].description === weatherJSON[4].a3) || (weather.weather[0].description === weatherJSON[4].a4) || (weather.weather[0].description === weatherJSON[4].a5) || (weather.weather[0].description === weatherJSON[4].a6) || (weather.weather[0].description === weatherJSON[4].a7) || (weather.weather[0].description === weatherJSON[4].a8) || (weather.weather[0].description === weatherJSON[4].a9) || (weather.weather[0].description === weatherJSON[4].a10) ?
+                    <ReactAnimatedWeather
+                        icon={"FOG"}
+                        color={"white"}
+                        size={256}
+                        animate={true}
+                    />
+                  : <p className="text-xl text-center font-onlytitles">Sorry, we can't display the icon right now.</p>
+                }
                 <p className="text-xl text-center font-onlytitles">{weather.weather[0].description[0].toUpperCase()}{weather.weather[0].description.slice(1)}</p>
                 <p className="text-5xl font-onlytitles text-center">{parseInt(weather.main.temp - 273)}<span>°</span></p>
                 <p className="text-2xl font-onlytitles text-center">Max {parseInt(weather.main.temp_max - 273)}<span>°</span></p> 
