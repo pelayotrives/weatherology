@@ -1,0 +1,13 @@
+.fade-in {
+  animation: fadeIn 3s;
+  will-change: transform, box-shadow, z-index;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

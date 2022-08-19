@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="app h-screen bg-black">
       <Main />
-      <Footer />
+      <Footer/>
     </div>
   );
 }
