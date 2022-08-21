@@ -24,7 +24,7 @@ module.exports = {
           }
         },
         animation: {
-          'fade-in': 'fade-in 3s linear',
+          'fade-in': 'fade-in 2s ease-in',
         },
         
     },

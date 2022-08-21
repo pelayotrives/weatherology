@@ -22,6 +22,8 @@ export default function Main() {
   const [weather, setWeather] = useState(null);
   // State to display the random index (random number between 0 and 9 to obtain a pic [will be assigned into the UnSplash API call].)
   const [randIndex, setRandIndex] = useState(0);
+  // For errors
+  const [anError, setAnError] = useState(false);
 
   //! Destructured consts.
   const { REACT_APP_ACCESS_KEY, REACT_APP_WEATHER_KEY } = process.env;
@@ -72,8 +74,11 @@ export default function Main() {
       let endpoint = `http://api.openweathermap.org/data/2.5/weather?q=${queryParam}&APPID=${REACT_APP_WEATHER_KEY}`;
       let response = await axios.get(endpoint);
       setWeather(response.data);
+      setAnError(false);
       log(response.data)
     } catch (error) {
+      setAnError(true);
+      alert("Please, select a city to check the weather.")
       console.log("Oopsie! Something happened with OpenWeather.", error);
     }
   }
@@ -113,7 +118,8 @@ export default function Main() {
         //! We do not add a pair of extra curly braces on the ternary comparation because inside of "style" it is already JSX.
         // '?' inside the interpolated variable doesn't do anything in case the call equals null, undefined or can't be done. This is just in case there is some bug in the call or in the API.
         // In case there are no photos to match the query, a placeholder will always be loaded. This will also be the landing image to display.
-        backgroundImage: unsplashPic.results.length !== 0 ? `url('${unsplashPic?.results[randIndex]?.urls?.regular}')` : `url(${Placeholder})`,
+        backgroundImage:
+        unsplashPic.results.length === 0 || anError === true ? `url(${Placeholder})` : `url('${unsplashPic?.results[randIndex]?.urls?.regular}')`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
@@ -121,10 +127,10 @@ export default function Main() {
 
         <Nav handleSearchProps={handleSearch} myRefProps={myRef}/>
 
-        { weather !== null ?
+        { weather !== null && anError === false ?
 
             <div className="body flex flex-col justify-between justify-items-center items-center content-center self-center bg-black bg-opacity-20 backdrop-blur-md drop-shadow-lg w-full h-full" ref={selectorRef}>
-              <div className="content flex flex-col justify-between justify-items-center items-center content-center self-center mt-10 w-3/6 h-4/5">
+              <div className="content animate-fade-in flex flex-col justify-between justify-items-center items-center content-center self-center mt-10 w-3/6 h-4/5">
 
                   <div className="weather-icons flex flex-row justify-center justify-items-center items-center content-center self-center">
                     { weather.weather[0].description === weatherJSON[5].c1 ? 
