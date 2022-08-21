@@ -7,7 +7,6 @@ import MoonLoader from "react-spinners/MoonLoader";
 import ReactAnimatedWeather from 'react-animated-weather';
 // JSON and components
 import weatherJSON from '../assets/weather.json';
-import './details.css'
 import Placeholder from '../assets/placeholder.jpg'
 import Nav from "./Nav";
 import Footer from "./Footer";
@@ -110,7 +109,7 @@ export default function Main() {
 
   return (
 
-    <div className="main fade-in flex flex-col h-full bg-black" style={{  
+    <div className="main animate-fade-in flex flex-col h-full bg-black" style={{  
         //! We do not add a pair of extra curly braces on the ternary comparation because inside of "style" it is already JSX.
         // '?' inside the interpolated variable doesn't do anything in case the call equals null, undefined or can't be done. This is just in case there is some bug in the call or in the API.
         // In case there are no photos to match the query, a placeholder will always be loaded. This will also be the landing image to display.

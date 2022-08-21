@@ -6,9 +6,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // boxShadow: {
-      //   'reddy': '0px 8px 20px 2px rgba(199,22,40,.5)',
-      // },
         height: {
           'small': '25vh',
           'medium': '50vh',
@@ -16,6 +13,20 @@ module.exports = {
           'enormous': '85vh',
           'giga': '95vh'
         },
+        keyframes: {
+          'fade-in': {
+            '0%': {
+              opacity: '0'
+            },
+            '100%': {
+              opacity: '1'
+            },
+          }
+        },
+        animation: {
+          'fade-in': 'fade-in 3s linear',
+        },
+        
     },
     fontFamily: {
       'mono': ['SFMono-Regular'],
