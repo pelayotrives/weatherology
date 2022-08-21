@@ -4,11 +4,11 @@ import React, { useState, useEffect, useRef } from "react";
 // NPM packages
 import axios from "axios";
 import MoonLoader from "react-spinners/MoonLoader";
-import { MdLocationPin } from "react-icons/md"
 import ReactAnimatedWeather from 'react-animated-weather';
 // JSON and components
 import weatherJSON from '../assets/weather.json';
 import './details.css'
+import Placeholder from '../assets/placeholder.jpg'
 import Nav from "./Nav";
 
 export default function Main() {
@@ -52,7 +52,7 @@ export default function Main() {
   //! Call to API and consuming data (UnSplash).
   //* useState is async, so if we try to do something with it in parallel, we won't have it until the next iteration.
   //* We will have to use useRef and asign a preset param to have something to show in the first iteration (param = 'Sky').
-  const obtainImage = async (queryParam = 'Weather') => {
+  const obtainImage = async (queryParam = 'ThisQueryIsJustToTriggerThePlaceholder') => {
     try {
       let endpoint = `https://api.unsplash.com/search/photos/?query=${queryParam}&client_id=${REACT_APP_ACCESS_KEY}`;
       // For a random photo: const endpoint = `https://api.unsplash.com/photos/random?client_id=${REACT_APP_ACCESS_KEY}`;
@@ -61,7 +61,6 @@ export default function Main() {
       log(response.data);
       // We set the randIndex with a number between 0 and the maximum of elements that the API call gets per page. We do this in case the response doesn't have the same number of elements than other query (Example: Tudela (3) vs Madrid (10)).
       setRandIndex(Math.floor(Math.random() * response.data.results.length))
-      selectorRef.current.classList.add('fade-in')
     } catch (error) {
       console.log("Oopsie! Something happened with UnSplash.", error);
     }
@@ -113,7 +112,8 @@ export default function Main() {
     <div className="main flex flex-col h-full bg-black" style={{  
         //! We do not add a pair of extra curly braces on the ternary comparation because inside of "style" it is already JSX.
         // '?' inside the interpolated variable doesn't do anything in case the call equals null, undefined or can't be done. This is just in case there is some bug in the call or in the API.
-        backgroundImage: unsplashPic.results.length !== 0 ? `url('${unsplashPic?.results[randIndex]?.urls?.regular}')` : `url('https://source.unsplash.com/random/?city,night')`,
+        // In case there are no photos to match the query, a placeholder will always be loaded. This will also be the landing image to display.
+        backgroundImage: unsplashPic.results.length !== 0 ? `url('${unsplashPic?.results[randIndex]?.urls?.regular}')` : `url(${Placeholder})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
@@ -121,10 +121,10 @@ export default function Main() {
 
         <Nav handleSearchProps={handleSearch} myRefProps={myRef}/>
 
-        { weather !== null &&
+        { weather !== null ?
 
-            <div className="body flex flex-col justify-between justify-items-center items-center content-center self-center w-full h-full bg-black bg-opacity-20 backdrop-blur-md drop-shadow-lg" ref={selectorRef}>
-              <div className="content mt-10 flex flex-col h-4/5 justify-between justify-items-center items-center content-center self-center w-3/6">
+            <div className="body flex flex-col justify-between justify-items-center items-center content-center self-center bg-black bg-opacity-20 backdrop-blur-md drop-shadow-lg w-full h-full" ref={selectorRef}>
+              <div className="content flex flex-col justify-between justify-items-center items-center content-center self-center mt-10 w-3/6 h-4/5">
 
                   <div className="weather-icons flex flex-row justify-center justify-items-center items-center content-center self-center">
                     { weather.weather[0].description === weatherJSON[5].c1 ? 
@@ -236,6 +236,17 @@ export default function Main() {
                </div>          
 
             </div>
+
+        : <div className="initial-message flex flex-col justify-center justify-items-center items-center content-center self-center w-full h-full">
+            <div className="initial-message-content flex flex-col justify-center justify-items-center items-center content-center self-center bg-opacity-20 w-1/2 h-1/2">
+              <p className="text-white text-7xl text-center font-onlytitles font-regular"><span className="font-bold">Weather</span>ology®</p>
+              <p className="text-4xl text-white font-extralight font-onlybody p-10">Search a city. <span className="underline decoration-1 underline-offset-4 font-medium">Look the weather</span>. Easy, right?</p>
+              <div className="buttons flex flex-row justify-between justify-items-center items-center content-center self-center w-1/2">
+                <a href="https://github.com/pelayotrives"><button className='font-onlybody text-lg bg-black hover:bg-[#2b2b2b] active:bg-[#494949] transition-all text-white py-4 px-12 rounded-md'>More projects</button></a>
+                <a href="https://www.linkedin.com/in/pelayo-trives-pozuelo/"><button className='font-onlybody text-lg bg-black hover:bg-[#2b2b2b] active:bg-[#494949] transition-all text-white py-4 px-12 rounded-md'>About me</button></a>
+              </div>
+            </div>            
+          </div>
         }
     </div>
 
