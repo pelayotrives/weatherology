@@ -1,6 +1,5 @@
 //* Components.
 import Main from "./components/Main";
-import Footer from "./components/Footer";
 
 function App() {
   
@@ -8,7 +7,6 @@ function App() {
   return (
     <div className="app h-screen bg-black">
       <Main />
-      <Footer/>
     </div>
   );
 }

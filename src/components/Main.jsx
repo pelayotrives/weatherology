@@ -10,6 +10,7 @@ import weatherJSON from '../assets/weather.json';
 import './details.css'
 import Placeholder from '../assets/placeholder.jpg'
 import Nav from "./Nav";
+import Footer from "./Footer";
 
 export default function Main() {
 
@@ -98,7 +99,7 @@ export default function Main() {
   if (!unsplashPic){
     return (
       <div className="text-center h-screen flex flex-col justify-center items-center content-center">
-        <p className="text-white text-center text-xl font-semibold font-onlybody">Loading content...</p>
+        <p className="text-white text-center text-2xl font-semibold font-onlybody">Loading forecast...</p>
         <br />
         <MoonLoader color={"rgb(255,255,255)"} size={50}/>
       </div>
@@ -109,7 +110,7 @@ export default function Main() {
 
   return (
 
-    <div className="main flex flex-col h-full bg-black" style={{  
+    <div className="main fade-in flex flex-col h-full bg-black" style={{  
         //! We do not add a pair of extra curly braces on the ternary comparation because inside of "style" it is already JSX.
         // '?' inside the interpolated variable doesn't do anything in case the call equals null, undefined or can't be done. This is just in case there is some bug in the call or in the API.
         // In case there are no photos to match the query, a placeholder will always be loaded. This will also be the landing image to display.
@@ -189,8 +190,8 @@ export default function Main() {
                   <div className="temperature-data text-white flex flex-col justify-center justify-items-center items-center content-center self-center">
                     <p className="text-9xl font-onlytitles font-bold">{parseInt(weather.main.temp - 273)}<span>°C</span></p>
                     <div className="temperature-data-max-min flex flex-row mt-9">
-                      <p className="text-3xl font-onlytitles font-regular mr-12">Max {parseInt(weather.main.temp_max - 273)}<span>°C</span></p>
-                      <p className="text-3xl font-onlytitles font-regular ml-12">Min {parseInt(weather.main.temp_min - 273)}<span>°C</span></p>
+                      <p className="text-3xl font-onlytitles font-regular font-medium mr-12">Max {parseInt(weather.main.temp_max - 273)}°C</p>
+                      <p className="text-3xl font-onlytitles font-regular font-medium ml-12">Min {parseInt(weather.main.temp_min - 273)}°C</p>
                     </div>         
                   </div>
 
@@ -248,6 +249,7 @@ export default function Main() {
             </div>            
           </div>
         }
+        <Footer/>
     </div>
 
   );
