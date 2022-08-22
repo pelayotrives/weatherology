@@ -24,6 +24,8 @@ export default function Main() {
   const [randIndex, setRandIndex] = useState(0);
   // For errors
   const [anError, setAnError] = useState(false);
+  // For removing or adding the class.
+  const [isActive, setIsActive] = useState(true);
 
   //! Destructured consts.
   const { REACT_APP_ACCESS_KEY, REACT_APP_WEATHER_KEY } = process.env;
@@ -78,7 +80,7 @@ export default function Main() {
       log(response.data)
     } catch (error) {
       setAnError(true);
-      alert("Please, select a city to check the weather.")
+      alert("Please, type a city to check the weather.")
       console.log("Oopsie! Something happened with OpenWeather.", error);
     }
   }
@@ -88,6 +90,7 @@ export default function Main() {
   const handleSearch = () => {
     obtainImage(myRef.current.value);
     obtainForecast(myRef.current.value);
+    setIsActive(isActive => !isActive)
     // We clean the field.
     myRef.current.value = "";
   }
@@ -127,10 +130,11 @@ export default function Main() {
 
         <Nav handleSearchProps={handleSearch} myRefProps={myRef}/>
 
+        {/* If there is a forecast because the api has been called, and there are no errors in the query, we proceed to do something. */}
         { weather !== null && anError === false ?
 
             <div className="body flex flex-col justify-between justify-items-center items-center content-center self-center bg-black bg-opacity-20 backdrop-blur-md drop-shadow-lg w-full h-full" ref={selectorRef}>
-              <div className="content animate-fade-in flex flex-col justify-between justify-items-center items-center content-center self-center mt-10 w-3/6 h-4/5">
+              <div className={isActive ? 'content animate-fade-in-2 flex flex-col justify-between justify-items-center items-center content-center self-center mt-10 w-3/6 h-4/5' : 'content animate-fade-in flex flex-col justify-between justify-items-center items-center content-center self-center mt-10 w-3/6 h-4/5'}>
 
                   <div className="weather-icons flex flex-row justify-center justify-items-center items-center content-center self-center">
                     { weather.weather[0].description === weatherJSON[5].c1 ? 
