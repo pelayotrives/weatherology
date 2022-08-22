@@ -247,13 +247,13 @@ export default function Main() {
 
             </div>
 
-        : <div className="initial-message flex flex-col justify-center justify-items-center items-center content-center self-center w-full h-full">
-            <div className="initial-message-content flex flex-col justify-center justify-items-center items-center content-center self-center bg-opacity-20 w-1/2 h-1/2">
-              <p className="text-white text-7xl text-center font-onlytitles font-regular"><span className="font-bold">Weather</span>ology®</p>
-              <p className="text-4xl text-white font-extralight font-onlybody p-10">Search a city. <span className="underline decoration-1 underline-offset-4 font-medium">Look the weather</span>. Easy, right?</p>
-              <div className="buttons flex flex-row justify-between justify-items-center items-center content-center self-center w-1/2">
-                <a href="https://github.com/pelayotrives"><button className='font-onlybody text-lg bg-black hover:bg-[#2b2b2b] active:bg-[#494949] transition-all text-white py-4 px-12 rounded-md'>More projects</button></a>
-                <a href="https://www.linkedin.com/in/pelayo-trives-pozuelo/"><button className='font-onlybody text-lg bg-black hover:bg-[#2b2b2b] active:bg-[#494949] transition-all text-white py-4 px-12 rounded-md'>About me</button></a>
+        : <div className="initial-message flex flex-col justify-center justify-items-center items-center content-center self-center w-fit h-full">
+            <div className="initial-message-content flex flex-col justify-center justify-items-center items-center content-center self-center bg-opacity-20 w-fit h-1/2">
+              <p className="text-white xsm:text-4xl xmd:text-5xl md:text-6xl lg:text-7xl text-center font-onlytitles font-regular"><span className="font-bold">Weather</span>ology®</p>
+              <p className="xsm:text-2xl xsm:w-[25ch] lg:w-[35ch] text-center xmd:text-4xl text-white font-extralight font-onlybody my-10">Search a city. <span className="underline decoration-1 underline-offset-4 font-medium">Look the weather</span>. Easy, right?</p>
+              <div className="buttons flex flex-row xsm:justify-evenly justify-items-center items-center content-center self-center w-full">
+                <a href="https://github.com/pelayotrives"><button className='font-onlybody text-lg bg-black hover:bg-[#2b2b2b] active:bg-[#494949] transition-all text-white xsm:px-4 md:px-12 xsm:py-3 xmd:py-4 rounded-md'>More projects</button></a>
+                <a href="https://www.linkedin.com/in/pelayo-trives-pozuelo/"><button className='font-onlybody text-lg bg-black hover:bg-[#2b2b2b] active:bg-[#494949] transition-all text-white py-4 xsm:px-4 md:px-12 xsm:py-3 xmd:py-4 rounded-md'>About me</button></a>
               </div>
             </div>            
           </div>

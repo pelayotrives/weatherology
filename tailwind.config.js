@@ -46,9 +46,10 @@ module.exports = {
       'onlydetails': ['Teko']
     },
     screens: {
-      'xs': '350px',
+      'xsm': '350px',
       'sm': '375px',
-      'md': '551px',
+      'xmd': '500px',
+      'md': '550px',
       'lg': '720px',
       'xl': '1024px',
       '2xl': '1280px',
