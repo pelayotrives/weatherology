@@ -134,113 +134,123 @@ export default function Main() {
         { weather !== null && anError === false ?
 
             <div className="body flex flex-col justify-between justify-items-center items-center content-center self-center bg-black bg-opacity-20 backdrop-blur-md drop-shadow-lg w-full h-full" ref={selectorRef}>
-              <div className={isActive ? 'content animate-fade-in-2 flex flex-col justify-between justify-items-center items-center content-center self-center mt-10 w-3/6 h-4/5' : 'content animate-fade-in flex flex-col justify-between justify-items-center items-center content-center self-center mt-10 w-3/6 h-4/5'}>
+              <div className={isActive ? 'content animate-fade-in-2 flex flex-col justify-between justify-items-center items-center content-center self-center xsm:w-5/6 lg:w-4/6 h-4/5 xsm:mt-8 md:mt-14' : 'content animate-fade-in flex flex-col justify-between justify-items-center items-center content-center self-center xsm:w-5/6 lg:w-4/6 h-4/5 xsm:mt-8 md:mt-14'}>
 
                   <div className="weather-icons flex flex-row justify-center justify-items-center items-center content-center self-center">
                     { weather.weather[0].description === weatherJSON[5].c1 ? 
                           <ReactAnimatedWeather
                           icon={"CLEAR_DAY"}
                           color={"white"}
-                          size={96}
+                          size={72}
                           animate={true}
                           />
                       : (weather.weather[0].description === weatherJSON[6].bc1) || (weather.weather[0].description === weatherJSON[6].bc2) ?
                           <ReactAnimatedWeather
                           icon={"PARTLY_CLOUDY_DAY"}
                           color={"white"}
-                          size={96}
+                          size={72}
                           animate={true}
                           />
                       : (weather.weather[0].description === weatherJSON[7].vc1) || (weather.weather[0].description === weatherJSON[7].vc2) ?
                           <ReactAnimatedWeather
                           icon={"CLOUDY"}
                           color={"white"}
-                          size={96}
+                          size={72}
                           animate={true}
                           />
                       : (weather.weather[0].description === weatherJSON[1].d1) || (weather.weather[0].description === weatherJSON[1].d2) || (weather.weather[0].description === weatherJSON[1].d3) || (weather.weather[0].description === weatherJSON[1].d4) || (weather.weather[0].description === weatherJSON[1].d5) || (weather.weather[0].description === weatherJSON[1].d6) || (weather.weather[0].description === weatherJSON[1].d7) || (weather.weather[0].description === weatherJSON[1].d8) || (weather.weather[0].description === weatherJSON[1].d9) || (weather.weather[0].description === weatherJSON[1].d10) || (weather.weather[0].description === weatherJSON[1].d11)|| (weather.weather[0].description === weatherJSON[1].d12)|| (weather.weather[0].description === weatherJSON[1].d13) ?
                           <ReactAnimatedWeather
                           icon={"SLEET"}
                           color={"white"}
-                          size={96}
+                          size={72}
                           animate={true}
                           />
                       : (weather.weather[0].description === weatherJSON[0].t1) || (weather.weather[0].description === weatherJSON[0].t2) || (weather.weather[0].description === weatherJSON[0].t3) || (weather.weather[0].description === weatherJSON[0].t4) || (weather.weather[0].description === weatherJSON[0].t5) || (weather.weather[0].description === weatherJSON[0].t6) || (weather.weather[0].description === weatherJSON[0].t7) || (weather.weather[0].description === weatherJSON[0].t8) || (weather.weather[0].description === weatherJSON[0].t9) || (weather.weather[0].description === weatherJSON[0].t10) || (weather.weather[0].description === weatherJSON[3].r1) || (weather.weather[0].description === weatherJSON[3].r2) || (weather.weather[0].description === weatherJSON[3].r3) || (weather.weather[0].description === weatherJSON[3].r4) ?
                           <ReactAnimatedWeather
                           icon={"RAIN"}
                           color={"white"}
-                          size={96}
+                          size={72}
                           animate={true}
                           />
                       : (weather.weather[0].description === weatherJSON[2].s1) || (weather.weather[0].description === weatherJSON[2].s2)|| (weather.weather[0].description === weatherJSON[2].s3)|| (weather.weather[0].description === weatherJSON[2].s4)|| (weather.weather[0].description === weatherJSON[2].s5)|| (weather.weather[0].description === weatherJSON[2].s6)|| (weather.weather[0].description === weatherJSON[2].s7)|| (weather.weather[0].description === weatherJSON[2].s8)|| (weather.weather[0].description === weatherJSON[2].s9)|| (weather.weather[0].description === weatherJSON[2].s10)|| (weather.weather[0].description === weatherJSON[2].s11)|| (weather.weather[0].description === weatherJSON[2].s12) ?
                           <ReactAnimatedWeather
                           icon={"SNOW"}
                           color={"white"}
-                          size={96}
+                          size={72}
                           animate={true}
                           />
                       : (weather.weather[0].description === weatherJSON[4].a1) || (weather.weather[0].description === weatherJSON[4].a2) || (weather.weather[0].description === weatherJSON[4].a3) || (weather.weather[0].description === weatherJSON[4].a4) || (weather.weather[0].description === weatherJSON[4].a5) || (weather.weather[0].description === weatherJSON[4].a6) || (weather.weather[0].description === weatherJSON[4].a7) || (weather.weather[0].description === weatherJSON[4].a8) || (weather.weather[0].description === weatherJSON[4].a9) || (weather.weather[0].description === weatherJSON[4].a10) ?
                           <ReactAnimatedWeather
                           icon={"FOG"}
                           color={"white"}
-                          size={96}
+                          size={72}
                           animate={true}
                           />
                       : <p className="text-xl text-center font-onlytitles">Sorry, we can't display the icon right now.</p>
                     }
                   </div>
 
-                  <div className="city-data text-white flex flex-col justify-center justify-items-center items-center content-center self-center">
-                    {/* <MdLocationPin size={50}/> */}
-                    <h2 className="text-5xl font-onlytitles font-bold"> <span>{weather.name}, {weather.sys.country}</span></h2>
-                    <p className="text-xl font-onlytitles font-regular mt-6">{date} &nbsp;|&nbsp; {dayDate} {time}</p>        
+                  <div className="city-data text-white flex flex-col justify-center justify-items-center items-center content-center self-center mt-2">
+                    <h2 className="xsm:text-4xl md:text-5xl text-center font-onlytitles font-bold"> <span>{weather.name}, {weather.sys.country}</span></h2>
+                    <p className="xsm:text-md lg:text-xl xsm:mt-2 font-onlytitles font-regular md:mt-4">{date} &nbsp;|&nbsp; {dayDate} {time}</p>        
                   </div>
 
-                  <div className="temperature-data text-white flex flex-col justify-center justify-items-center items-center content-center self-center">
-                    <p className="text-9xl font-onlytitles font-bold">{parseInt(weather.main.temp - 273)}<span>°C</span></p>
-                    <div className="temperature-data-max-min flex flex-row mt-9">
-                      <p className="text-3xl font-onlytitles font-regular font-medium mr-12">Max {parseInt(weather.main.temp_max - 273)}°C</p>
-                      <p className="text-3xl font-onlytitles font-regular font-medium ml-12">Min {parseInt(weather.main.temp_min - 273)}°C</p>
+                  <div className="temperature-data text-white flex flex-col justify-center justify-items-center items-center content-center self-center xsm:my-4 md:my-0">
+                    <p className="xsm:text-5xl md:text-7xl lg:text-9xl font-onlytitles font-bold">{parseInt(weather.main.temp - 273)}<span>°C</span></p>
+                    <div className="temperature-data-max-min flex flex-row xsm:mt-2 md:mt-5 lg:mt-4">
+                      <p className="xsm:text-xl md:text-3xl font-onlytitles font-regular font-medium mr-12">Max {parseInt(weather.main.temp_max - 273)}°C</p>
+                      <p className="xsm:text-xl md:text-3xl font-onlytitles font-regular font-medium ml-12">Min {parseInt(weather.main.temp_min - 273)}°C</p>
                     </div>         
                   </div>
 
                   <div className="weather-data text-white flex flex-col justify-center justify-items-center items-center content-center self-center">
-                    <p className="text-5xl font-onlytitles font-medium">{weather.weather[0].main}</p>
-                    <p className="text-xl font-onlytitles font-regular">({weather.weather[0].description[0].toUpperCase()}{weather.weather[0].description.slice(1)})</p>
+                    <p className="xsm:text-3xl xsm:font-semibold md:font-medium md:text-5xl font-onlytitles">{weather.weather[0].main}</p>
+                    <p className="xsm:text-lg md:text-xl font-onlytitles font-regular md:mt-3">({weather.weather[0].description[0].toUpperCase()}{weather.weather[0].description.slice(1)})</p>
                   </div>
 
-                  <div className="extra-data text-white flex flex-row justify-between justify-items-center items-center content-center w-full">
-                      {/* ******************************************** */}
-                      <div className="cloudiness text-xl font-onlytitles text-center">
-                        <p>Cloudiness</p>
-                        <hr className="border-1 border-white my-2" />
-                        <p className="text-xl font-onlytitles">
-                        { parseInt(weather.clouds.all) === 0 ? <span className="font-semibold">0%</span>
-                            : parseInt(weather.clouds.all) > 0 && parseInt(weather.clouds.all) <= 25 ? <span className="font-semibold">25%</span>
-                            : parseInt(weather.clouds.all) > 25 && parseInt(weather.clouds.all) <= 50 ? <span className="font-semibold">50%</span>
-                            : parseInt(weather.clouds.all) > 50 && parseInt(weather.clouds.all) <= 70 ? <span className="font-semibold">75%</span>
-                            : <span className="font-semibold">100%</span>
-                        }
-                        </p>
+                  <div className="extra-data text-white flex flex-row justify-between justify-items-center items-center content-center w-full xsm:mt-4 md:mt-0">
+
+                      <div className="first-column flex md:flex-row xsm:flex-col xsm:justify-around xsm:justify-items-center xsm:items-center xsm:content-center xsm:self-center w-full">
+
+                        {/* ******************************************** */}
+                        <div className="cloudiness font-onlytitles text-center">
+                          <p className="xsm:text-lg md:text-xl">Cloudiness</p>
+                          <hr className="border-1 border-white my-2" />
+                          <p className="xsm:text-lg md:text-xl font-onlytitles">
+                          { parseInt(weather.clouds.all) === 0 ? <span className="font-semibold">0%</span>
+                              : parseInt(weather.clouds.all) > 0 && parseInt(weather.clouds.all) <= 25 ? <span className="font-semibold">25%</span>
+                              : parseInt(weather.clouds.all) > 25 && parseInt(weather.clouds.all) <= 50 ? <span className="font-semibold">50%</span>
+                              : parseInt(weather.clouds.all) > 50 && parseInt(weather.clouds.all) <= 70 ? <span className="font-semibold">75%</span>
+                              : <span className="font-semibold">100%</span>
+                          }
+                          </p>
+                        </div>
+                        {/* ******************************************** */}
+                        <div className="humidity text-center xsm:mt-2 md:mt-0">
+                          <p className="xsm:text-lg md:text-xl font-onlytitles">Humidity</p>
+                          <hr className="border-1 border-white my-2" />
+                          <p className="xsm:text-lg md:text-xl font-onlytitles font-semibold">{weather.main.humidity}<span>%</span></p>
+                        </div>
+
                       </div>
-                      {/* ******************************************** */}
-                      <div className="humidity text-center">
-                        <p className="text-xl font-onlytitles">Humidity</p>
-                        <hr className="border-1 border-white my-2" />
-                        <p className="text-xl font-onlytitles font-semibold">{weather.main.humidity}<span>%</span></p>
+
+                      <div className="second-column flex md:flex-row xsm:flex-col xsm:justify-around xsm:justify-items-center xsm:items-center xsm:content-center xsm:self-end w-full">
+                      
+                        {/* ******************************************** */}
+                        <div className="pressure text-center">
+                          <p className="xsm:text-lg md:text-xl font-onlytitles">Pressure</p>
+                          <hr className="border-1 border-white my-2" />
+                          <p className="xsm:text-lg md:text-xl font-onlytitles font-semibold">{weather.main.pressure}<span> mbar</span></p>
+                        </div>
+                        {/* ******************************************** */}
+                        <div className="wind-speed text-center xsm:mt-2 md:mt-0">
+                          <p className="xsm:text-lg md:text-xl font-onlytitles">Wind speed</p>
+                          <hr className="border-1 border-white my-2" />
+                          <p className="xsm:text-lg md:text-xl font-onlytitles font-semibold">{weather.wind.speed}<span> m/s</span></p>
+                        </div>
+
                       </div>
-                      {/* ******************************************** */}
-                      <div className="pressure text-center">
-                        <p className="text-xl font-onlytitles">Pressure</p>
-                        <hr className="border-1 border-white my-2" />
-                        <p className="text-xl font-onlytitles font-semibold">{weather.main.pressure}<span> mbar</span></p>
-                      </div>
-                      {/* ******************************************** */}
-                      <div className="wind-speed text-center">
-                        <p className="text-xl font-onlytitles">Wind speed</p>
-                        <hr className="border-1 border-white my-2" />
-                        <p className="text-xl font-onlytitles font-semibold">{weather.wind.speed}<span> m/s</span></p>
-                      </div>
+
                   </div>
 
                </div>          
