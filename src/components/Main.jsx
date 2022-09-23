@@ -73,7 +73,7 @@ export default function Main() {
   //! Call to API and consuming data (OpenWeather)
   const obtainForecast = async (queryParam) => {
     try {
-      let endpoint = `http://api.openweathermap.org/data/2.5/weather?q=${queryParam}&APPID=${REACT_APP_WEATHER_KEY}`;
+      let endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${queryParam}&APPID=${REACT_APP_WEATHER_KEY}`;
       let response = await axios.get(endpoint);
       setWeather(response.data);
       setAnError(false);
